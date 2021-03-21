@@ -8,8 +8,10 @@
                     <div class="card-header">Dashboard</div>
 
                     <div class="card-body">
-                    Welcome
-
+                        Home
+                        @foreach($response as $item)
+                            <br>  {{$item}}
+                        @endforeach
                     </div>
                 </div>
             </div>

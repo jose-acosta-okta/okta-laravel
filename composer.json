@@ -10,10 +10,14 @@
     "require": {
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
+        "firebase/php-jwt": "^5.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/psr7": "^1.7",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "okta/jwt-verifier": "dev-php8_updates",
+        "tymon/jwt-auth": "dev-develop"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
