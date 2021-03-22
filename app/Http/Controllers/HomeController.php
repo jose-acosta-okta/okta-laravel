@@ -27,11 +27,22 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $response = $request->response;
+        $access_token = $response['access_token'];
+        $id_token = $response['id_token'];
+        $token_expires_in = $response['expires_in'];
+        //dd($access_token);
+        $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
+            ->setIssuer(env('OKTA_ISSUER'))
+            ->setAudience('api://default')
+            ->setClientId(env('OKTA_CLIENT_ID'))
+            ->build();
 
+        $jwt = $jwtVerifier->verify($access_token);
+        dd($jwt);
         //$token = JWTAuth::getToken();
-        $token = $response['access_token'];
-        $payload = JWTAuth::decode($token);
-        dd($payload);
+        //$token = $response['access_token'];
+        //$payload = JWTAuth::decode($token);
+        //dd($payload);
         //$apy = JWTAuth::getPayload($token)->toArray();
         //dd($apy);
         // JWK::parseKeySet($jwks) returns an associative array of **kid** to private
@@ -39,7 +50,7 @@ class HomeController extends Controller
         //JWT::decode($payload, JWK::parseKeySet($jwks), $supportedAlgorithm);
 
 
-        dd($response['access_token']);
+        //dd($response['access_token']);
         return view('pages.home', compact('response'));
     }
 

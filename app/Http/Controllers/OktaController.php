@@ -459,4 +459,19 @@ class OktaController extends Controller
         }
         return json_decode(curl_exec($ch));
     }
+
+    function verifyJwt($jwt)
+    {
+        try {
+            $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
+                ->setIssuer(getenv('OKTA_ISSUER'))
+                ->setAudience('api://default')
+                ->setClientId(getenv('OKTA_CLIENT_ID'))
+                ->build();
+
+            return $jwtVerifier->verify($jwt);
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }
