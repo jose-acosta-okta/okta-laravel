@@ -9,6 +9,7 @@ use App\Http\Controllers\JWK;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Payload;
+use Okta\JwtVerifier\JwtVerifierBuilder;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,15 @@ class HomeController extends Controller
         $access_token = $response['access_token'];
         $id_token = $response['id_token'];
         $token_expires_in = $response['expires_in'];
-        //dd($access_token);
+        //$test = $this->okta->getProfile();
+        //dd($test);
+        //$jwtBuilder = new JwtVerifierBuilder();
+        //$jwtBuilder->setIssuer(env('OKTA_ISSUER'));
+        //$jwtBuilder->setAudience('api://default');
+        //$jwtBuilder->setClientId(env('OKTA_CLIENT_ID'));
+        //$jwtBuilder->build();
+        //dd($jwtBuilder);
+        /*
         $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
             ->setIssuer(env('OKTA_ISSUER'))
             ->setAudience('api://default')
@@ -39,6 +48,7 @@ class HomeController extends Controller
 
         $jwt = $jwtVerifier->verify($access_token);
         dd($jwt);
+        */
         //$token = JWTAuth::getToken();
         //$token = $response['access_token'];
         //$payload = JWTAuth::decode($token);

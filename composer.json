@@ -13,11 +13,12 @@
         "firebase/php-jwt": "^5.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "guzzlehttp/psr7": "^1.7",
+        "guzzlehttp/psr7": "^1.8",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "okta/jwt-verifier": "dev-php8_updates",
-        "tymon/jwt-auth": "dev-develop"
+        "tymon/jwt-auth": "dev-develop",
+        "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
