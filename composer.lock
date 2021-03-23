@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "9c8f8e158e01cee352bc15530a16f0af",
+=======
+    "content-hash": "2a2d88f65d2609ebedfe1ae89acdedba",
+>>>>>>> b992c650514c7e45aefb6f0c49a9163503312c0b
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1046,8 +1050,67 @@
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
                 "source": "https://github.com/guzzle/psr7/tree/1.8.1"
+<<<<<<< HEAD
             },
             "time": "2021-03-21T16:25:00+00:00"
+=======
+            },
+            "time": "2021-03-21T16:25:00+00:00"
+        },
+        {
+            "name": "http-interop/http-factory-guzzle",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/http-interop/http-factory-guzzle.git",
+                "reference": "34861658efb9899a6618cef03de46e2a52c80fc0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/http-interop/http-factory-guzzle/zipball/34861658efb9899a6618cef03de46e2a52c80fc0",
+                "reference": "34861658efb9899a6618cef03de46e2a52c80fc0",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/psr7": "^1.4.2",
+                "psr/http-factory": "^1.0"
+            },
+            "provide": {
+                "psr/http-factory-implementation": "^1.0"
+            },
+            "require-dev": {
+                "http-interop/http-factory-tests": "^0.5",
+                "phpunit/phpunit": "^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Http\\Factory\\Guzzle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "An HTTP Factory using Guzzle PSR7",
+            "keywords": [
+                "factory",
+                "http",
+                "psr-17",
+                "psr-7"
+            ],
+            "support": {
+                "issues": "https://github.com/http-interop/http-factory-guzzle/issues",
+                "source": "https://github.com/http-interop/http-factory-guzzle/tree/master"
+            },
+            "time": "2018-07-31T19:32:56+00:00"
+>>>>>>> b992c650514c7e45aefb6f0c49a9163503312c0b
         },
         {
             "name": "laravel/framework",
@@ -1287,32 +1350,29 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.2.5",
+            "version": "3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "82be04b4753f8b7693b62852b7eab30f97524f9b"
+                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/82be04b4753f8b7693b62852b7eab30f97524f9b",
-                "reference": "82be04b4753f8b7693b62852b7eab30f97524f9b",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/c1123697f6a2ec29162b82f170dd4a491f524773",
+                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "ext-openssl": "*",
-                "php": ">=5.5"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "mdanter/ecc": "~0.3.1",
                 "mikey179/vfsstream": "~1.5",
                 "phpmd/phpmd": "~2.2",
                 "phpunit/php-invoker": "~1.1",
-                "phpunit/phpunit": "~4.5",
+                "phpunit/phpunit": "^5.7 || ^7.3",
                 "squizlabs/php_codesniffer": "~2.3"
-            },
-            "suggest": {
-                "mdanter/ecc": "Required to use Elliptic Curves based algorithms."
             },
             "type": "library",
             "extra": {
@@ -1343,9 +1403,19 @@
             ],
             "support": {
                 "issues": "https://github.com/lcobucci/jwt/issues",
-                "source": "https://github.com/lcobucci/jwt/tree/3.2"
+                "source": "https://github.com/lcobucci/jwt/tree/3.3.3"
             },
-            "time": "2018-11-11T12:22:26+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-08-20T13:22:28+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1913,22 +1983,22 @@
         },
         {
             "name": "okta/jwt-verifier",
-            "version": "dev-php8_updates",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/okta/okta-jwt-verifier-php.git",
-                "reference": "b3a2000600eb560086d0b2497e1a1383873b755d"
+                "reference": "0f14ce19085b3ab775d1a0b7189bc27190b57be9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/okta/okta-jwt-verifier-php/zipball/b3a2000600eb560086d0b2497e1a1383873b755d",
-                "reference": "b3a2000600eb560086d0b2497e1a1383873b755d",
+                "url": "https://api.github.com/repos/okta/okta-jwt-verifier-php/zipball/0f14ce19085b3ab775d1a0b7189bc27190b57be9",
+                "reference": "0f14ce19085b3ab775d1a0b7189bc27190b57be9",
                 "shasum": ""
             },
             "require": {
                 "bretterer/iso_duration_converter": "^0.1.0",
                 "nesbot/carbon": "^2.0",
-                "php": "^7.2 || ^8.0",
+                "php": "^7.2",
                 "php-http/client-common": "^2.3",
                 "php-http/curl-client": "^2.1",
                 "php-http/discovery": "^1.9",
@@ -1940,7 +2010,7 @@
                 "firebase/php-jwt": "^5.2",
                 "guzzlehttp/psr7": "dev-master#ad1de77a65b751d598ced37747bf4c17d457fbc9",
                 "php-http/mock-client": "^1.4",
-                "phpunit/phpunit": "^7.0 || ^9.0",
+                "phpunit/phpunit": "^7.0 ",
                 "squizlabs/php_codesniffer": "^3.5",
                 "symfony/var-dumper": "^5.1"
             },
@@ -1963,9 +2033,9 @@
             "description": "A verifier library for working with Okta JWT's",
             "support": {
                 "issues": "https://github.com/okta/okta-jwt-verifier-php/issues",
-                "source": "https://github.com/okta/okta-jwt-verifier-php/tree/php8_updates"
+                "source": "https://github.com/okta/okta-jwt-verifier-php/tree/1.1.1"
             },
-            "time": "2021-02-11T15:29:44+00:00"
+            "time": "2021-03-04T01:11:31+00:00"
         },
         {
             "name": "opis/closure",
@@ -8437,7 +8507,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "okta/jwt-verifier": 20,
         "tymon/jwt-auth": 20
     },
     "prefer-stable": true,
