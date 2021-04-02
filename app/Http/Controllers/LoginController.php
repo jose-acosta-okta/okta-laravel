@@ -38,7 +38,8 @@ class LoginController extends Controller
 
         $token = $response->access_token;
 
-        return redirect()->route('home', compact('response'));
+        //return redirect()->route('home', compact('response'));
+        return $response;
     }
 
     public function authCodeCallback(Request $request)
