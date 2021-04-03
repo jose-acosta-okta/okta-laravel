@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\OktaApiService;
-use \Firebase\JWT\JWT;
-use App\Http\Controllers\JWK;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\Payload;
-use Okta\JwtVerifier\JwtVerifierBuilder;
+use Cookie;
 
 class HomeController extends Controller
 {
@@ -27,11 +22,15 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $response = $request->response;
-        $access_token = $response['access_token'];
-        $id_token = $response['id_token'];
-        $token_expires_in = $response['expires_in'];
-        //$test = $this->okta->getProfile();
+        $id_token = $request->id_token;
+        $access_token = $request->access_token;
+        $expires_in = $request->expires_in;
+        //dd('dd'. $access_token);
+        //dd($id_token);
+        //$access_token = $response['access_token'];
+        //$id_token = $response['id_token'];
+        //$token_expires_in = $response['expires_in'];
+        $test = $this->okta->getProfile($access_token);
         //dd($test);
         //$jwtBuilder = new JwtVerifierBuilder();
         //$jwtBuilder->setIssuer(env('OKTA_ISSUER'));
@@ -61,7 +60,7 @@ class HomeController extends Controller
 
 
         //dd($response['access_token']);
-        return view('pages.home', compact('response'));
+        return view('pages.home', compact('access_token','id_token'));
     }
 
 }

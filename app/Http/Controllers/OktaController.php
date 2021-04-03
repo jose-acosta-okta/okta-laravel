@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use App\Http\Controllers\UsernamePasswordToken;
 use Okta\Hooks\RegistrationInlineHook;
 use Exception;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+use Okta\JwtVerifier\Adaptors\SpomkyLabsJose;
 
 class OktaController extends Controller
 {
@@ -27,6 +27,7 @@ class OktaController extends Controller
         $this->apiToken     = env('OKTA_API_TOKEN');
         $this->apiUrlBase   = env('OKTA_API_URL_BASE');
         $this->issuer   = env('OKTA_ISSUER');
+
     }
 
     public function index()
@@ -42,7 +43,8 @@ class OktaController extends Controller
     }
 
 
-    function getCode($code) {
+    function getCode($code)
+    {
         $authHeaderSecret = base64_encode( env('OKTA_CLIENT_ID') . ':' . env('OKTA_CLIENT_SECRET') );
         $query = http_build_query([
             'grant_type' => 'authorization_code',
@@ -398,16 +400,18 @@ class OktaController extends Controller
         return curl_exec($ch);
     }
 
-    public function getProfile()
+    public function getProfile($access_token)
     {
+        dd(env('OKTA_CLIENT_ID'));
 
         $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
+            //->setAdaptor(new \Okta\JwtVerifier\Adaptors\SpomkyLabsJose())
             ->setIssuer(env('OKTA_ISSUER'))
             ->setAudience('api://default')
             ->setClientId(env('OKTA_CLIENT_ID'))
             ->build();
 
-        $jwt = $jwtVerifier->verify($_COOKIE['access_token']);
+        $jwt = $jwtVerifier->verify($access_token);
 
         return $jwt->claims;
 

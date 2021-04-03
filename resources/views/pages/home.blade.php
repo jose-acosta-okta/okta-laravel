@@ -9,9 +9,9 @@
 
                     <div class="card-body">
                         Home
-                        @foreach($response as $item)
-                            <br>  {{$item}}
-                        @endforeach
+                        {{$id_token}}
+                        <br>
+                        {{$access_token}}
                     </div>
                 </div>
             </div>

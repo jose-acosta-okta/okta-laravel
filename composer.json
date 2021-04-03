@@ -14,19 +14,12 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "guzzlehttp/psr7": "^1.8",
-<<<<<<< HEAD
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "okta/jwt-verifier": "dev-php8_updates",
         "tymon/jwt-auth": "dev-develop",
-        "vlucas/phpdotenv": "^5.3"
-=======
-        "http-interop/http-factory-guzzle": "^1.0",
-        "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5",
-        "okta/jwt-verifier": "^1.1",
-        "tymon/jwt-auth": "dev-develop"
->>>>>>> b992c650514c7e45aefb6f0c49a9163503312c0b
+        "vlucas/phpdotenv": "^5.3",
+        "http-interop/http-factory-guzzle": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
