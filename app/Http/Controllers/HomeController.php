@@ -25,39 +25,11 @@ class HomeController extends Controller
         $id_token = $request->id_token;
         $access_token = $request->access_token;
         $expires_in = $request->expires_in;
-        //dd('dd'. $access_token);
-        //dd($id_token);
-        //$access_token = $response['access_token'];
-        //$id_token = $response['id_token'];
-        //$token_expires_in = $response['expires_in'];
-        $test = $this->okta->getProfile($access_token);
-        //dd($test);
-        //$jwtBuilder = new JwtVerifierBuilder();
-        //$jwtBuilder->setIssuer(env('OKTA_ISSUER'));
-        //$jwtBuilder->setAudience('api://default');
-        //$jwtBuilder->setClientId(env('OKTA_CLIENT_ID'));
-        //$jwtBuilder->build();
-        //dd($jwtBuilder);
-        /*
-        $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
-            ->setIssuer(env('OKTA_ISSUER'))
-            ->setAudience('api://default')
-            ->setClientId(env('OKTA_CLIENT_ID'))
-            ->build();
 
-        $jwt = $jwtVerifier->verify($access_token);
-        dd($jwt);
-        */
-        //$token = JWTAuth::getToken();
-        //$token = $response['access_token'];
-        //$payload = JWTAuth::decode($token);
-        //dd($payload);
-        //$apy = JWTAuth::getPayload($token)->toArray();
-        //dd($apy);
-        // JWK::parseKeySet($jwks) returns an associative array of **kid** to private
-        // key. Pass this as the second parameter to JWT::decode.
-        //JWT::decode($payload, JWK::parseKeySet($jwks), $supportedAlgorithm);
-
+        $jwt_id_token = $this->okta->getProfile($id_token);
+        //dd($jwt_id_token);
+        $jwt_access_token = $this->okta->getProfile($access_token);
+        dd($jwt_access_token);
 
         //dd($response['access_token']);
         return view('pages.home', compact('access_token','id_token'));

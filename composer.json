@@ -14,12 +14,14 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "guzzlehttp/psr7": "^1.8",
+        "http-interop/http-factory-guzzle": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "okta/jwt-verifier": "dev-php8_updates",
         "tymon/jwt-auth": "dev-develop",
         "vlucas/phpdotenv": "^5.3",
-        "http-interop/http-factory-guzzle": "^1.0"
+        "web-token/jwt-framework": "^2.2",
+        "zendtech/ibmitoolkit": "^1.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

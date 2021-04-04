@@ -400,18 +400,30 @@ class OktaController extends Controller
         return curl_exec($ch);
     }
 
-    public function getProfile($access_token)
+    public function getProfile($token)
     {
-        dd(env('OKTA_CLIENT_ID'));
-
         $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
-            //->setAdaptor(new \Okta\JwtVerifier\Adaptors\SpomkyLabsJose())
+            //->setDiscovery(new \Okta\JwtVerifier\Discovery\Oauth) // This is not needed if using oauth.  The other option is OIDC
+            ->setAdaptor(new \Okta\JwtVerifier\Adaptors\FirebasePhpJwt())
+            ->setNonce(null)
             ->setIssuer(env('OKTA_ISSUER'))
             ->setAudience('api://default')
             ->setClientId(env('OKTA_CLIENT_ID'))
             ->build();
 
-        $jwt = $jwtVerifier->verify($access_token);
+        $jwt = $jwtVerifier->verify($token);
+        dd($jwt);
+       // dd($jwt->getClaims());
+
+        //$jwt->toJson(); // Returns Claims as JSON Object
+
+        //$jwt->getClaims(); // Returns Claims as they come from the JWT Package used
+
+        //$jwt->getIssuedAt(); // returns Carbon instance of issued at time
+        //$jwt->getIssuedAt(false); // returns timestamp of issued at time
+
+        //$jwt->getExpirationTime(); //returns Carbon instance of Expiration Time
+        //$jwt->getExpirationTime(false); //returns timestamp of Expiration Time
 
         return $jwt->claims;
 
@@ -468,11 +480,13 @@ class OktaController extends Controller
     {
         try {
             $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
+                ->setAdaptor(new \Okta\JwtVerifier\Adaptors\FirebasePhpJwt())
+                ->setNonce(null)
                 ->setIssuer(getenv('OKTA_ISSUER'))
                 ->setAudience('api://default')
                 ->setClientId(getenv('OKTA_CLIENT_ID'))
                 ->build();
-
+            //dd($jwtVerifier);
             return $jwtVerifier->verify($jwt);
         } catch (\Exception $e) {
             return false;
