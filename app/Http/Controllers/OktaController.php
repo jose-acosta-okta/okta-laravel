@@ -405,15 +405,15 @@ class OktaController extends Controller
         $jwtVerifier = (new \Okta\JwtVerifier\JwtVerifierBuilder())
             //->setDiscovery(new \Okta\JwtVerifier\Discovery\Oauth) // This is not needed if using oauth.  The other option is OIDC
             ->setAdaptor(new \Okta\JwtVerifier\Adaptors\FirebasePhpJwt())
-            ->setNonce(null)
+            //->setNonce(null)
             ->setIssuer(env('OKTA_ISSUER'))
             ->setAudience('api://default')
             ->setClientId(env('OKTA_CLIENT_ID'))
             ->build();
 
         $jwt = $jwtVerifier->verify($token);
-        dd($jwt);
-       // dd($jwt->getClaims());
+
+        return $jwt->getClaims();
 
         //$jwt->toJson(); // Returns Claims as JSON Object
 
@@ -424,8 +424,6 @@ class OktaController extends Controller
 
         //$jwt->getExpirationTime(); //returns Carbon instance of Expiration Time
         //$jwt->getExpirationTime(false); //returns timestamp of Expiration Time
-
-        return $jwt->claims;
 
     }
 
@@ -486,10 +484,20 @@ class OktaController extends Controller
                 ->setAudience('api://default')
                 ->setClientId(getenv('OKTA_CLIENT_ID'))
                 ->build();
-            //dd($jwtVerifier);
             return $jwtVerifier->verify($jwt);
         } catch (\Exception $e) {
             return false;
         }
+    }
+
+    public function parseJwt($token)
+    {
+        $tokenParts = explode(".", $token);
+        $tokenHeader = base64_decode($tokenParts[0]);
+        $tokenPayload = base64_decode($tokenParts[1]);
+        $jwtHeader = json_decode($tokenHeader, true);
+        $jwtPayload = json_decode($tokenPayload, true);
+
+        return $jwtPayload;
     }
 }

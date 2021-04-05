@@ -19,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/authorization-code/callback', [LoginController::class, 'callback']);

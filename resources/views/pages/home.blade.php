@@ -9,9 +9,8 @@
 
                     <div class="card-body">
                         Home
-                        {{$id_token}}
-                        <br>
-                        {{$access_token}}
+                        {{ dd($access_token) }}
+
                     </div>
                 </div>
             </div>
